@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {Header} from './Header';
 
 const players = [
 	{name: 'LDK', score: 30, id: 1},
@@ -8,18 +9,6 @@ const players = [
 	{name: 'KIM', score: 50, id: 3},
 	{name: 'PARK', score: 60, id: 4},
 ];
-
-const Header = (props) => {
-	console.log(props);
-	// destruct assignment
-	const {title, totalPlayers} = props;
-	return (
-		<header className="header">
-			<h1 className="h1">{title}</h1>
-			<span className='stats'>Players: {totalPlayers}</span>
-		</header>
-	);
-}
 
 const Player = (props) => (
 	<div className='player'>
