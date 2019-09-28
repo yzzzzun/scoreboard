@@ -1,11 +1,6 @@
 import React from "react";
 
-class Counter extends React.Component {
-	state = {
-		score: 0,
-		a: 3
-	}
-
+export class Counter extends React.Component {
 
 	changeScore = (delta) => {
 		// 2) arrow 펑션안의 this는 lexical this
@@ -32,5 +27,3 @@ class Counter extends React.Component {
 		);
 	}
 }
-
-export default Counter;
