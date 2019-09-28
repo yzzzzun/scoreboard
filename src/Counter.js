@@ -20,7 +20,7 @@ export class Counter extends React.Component {
 			<div className='counter'>
 				<button className='counter-action decrement'
 								onClick={() => this.changeScore(-1)}> - </button>
-				<span className='counter-score'>{this.state.score}</span>
+				<span className='counter-score'>{this.props.score}</span>
 				<button className='counter-action increment'
 								onClick={() => this.changeScore(1)}> + </button>
 			</div>
