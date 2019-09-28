@@ -1,28 +1,23 @@
-import React from "react";
+import React from 'react';
 
+// 클래스 컴포넌트
+// 1. React.Component 상속, 2: render 오버라이딩해서 React Element를 리턴
+// 3. 속성앞에 this
 export class Counter extends React.Component {
 
-	changeScore = (delta) => {
-		// 2) arrow 펑션안의 this는 lexical this
-		console.log(this);
-		// 1. state를 변경하는 방법
-		// this.state.score += 1;
-		// this.setState({score: this.state.score + 1});
-		// 2. merge 된다. : 기존 속성으 그대로 유지
-		// 3. 비동기로 처리
-		this.setState(prevState => ({
-			score: prevState.score + delta
-		}));
+	increment = (delta) => {
+		this.props.changeScore(this.props.id, delta);
 	}
 
+	// 리액트 이벤트: 선언형 스타일: 함수 선언문을 우측에 배치
 	render() {
 		return (
-			<div className='counter'>
-				<button className='counter-action decrement'
-								onClick={() => this.changeScore(-1)}> - </button>
-				<span className='counter-score'>{this.props.score}</span>
-				<button className='counter-action increment'
-								onClick={() => this.changeScore(1)}> + </button>
+			<div className="counter">
+				<button className="counter-action decrement"
+								onClick={() => this.increment(-1)}> - </button>
+				<span className="counter-score">{this.props.score}</span>
+				<button className="counter-action increment"
+								onClick={() => this.increment(1)}> + </button>
 			</div>
 		);
 	}
