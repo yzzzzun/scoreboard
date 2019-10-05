@@ -8,15 +8,17 @@ export class Player extends React.Component {
 	}
 
 	render() {
-		console.log(this.props.name, ' rendered');
+		const {removePlayer, id, changeScore, score, name} = this.props;
+
+		console.log(name, ' rendered');
 		return (
 			<div className='player'>
     <span className='player-name'>
       <button className='remove-player'
-							onClick={() => this.props.removePlayer(this.props.id)}>x</button>
+							onClick={() => removePlayer(id)}>x</button>
     </span>
-				<span className='player-name'>{this.props.name}</span>
-				<Counter score={this.props.score} changeScore={this.props.changeScore} id={this.props.id}/>
+				<span className='player-name'>{name}</span>
+				<Counter score={score} changeScore={changeScore} id={id}/>
 			</div>
 		)
 	}
