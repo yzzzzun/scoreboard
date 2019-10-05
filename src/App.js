@@ -2,8 +2,12 @@ import React from 'react';
 import './App.css';
 import {Header} from "./Header";
 import {Player} from "./Player";
+import {AddPlayerForm} from "./AddPlayerForm";
 
 class App extends React.Component {
+
+	maxId = 4;
+
 	state = {
 		players: [
 			{name: 'LDK', score: 30, id: 1},
@@ -27,9 +31,28 @@ class App extends React.Component {
 						)
 					})
 				}
+				<AddPlayerForm addPlayer={this.handleAddPlayer}></AddPlayerForm>
 			</div>
 		);
 	}
+
+	handleAddPlayer = (name) => {
+		console.log(name);
+		this.setState((prevState) => {
+			// prevState.players.push({name: name, id: ++this.maxId, score: 0});
+			// return {
+			// 	players : [...prevState.players]
+			// }
+
+			const players = [...prevState.players];
+			players.push({name: name, id: ++this.maxId, score: 0});
+
+			return {
+				players
+			}
+		});
+	}
+
 	// 1. 콜백 펑션 정의
 	handleRemovePlayer = (id) => {
 		this.setState(prevState => ({
@@ -40,7 +63,7 @@ class App extends React.Component {
 	handleChangeScore = (id, delta) => {
 		console.log('handleChangeScore: ', id, delta);
 		this.setState(prevState => {
-			const player = prevState.players.find(player => player.id == id);
+			const player = prevState.players.find(player => player.id === id);
 			player.score += delta;
 
 			return {
