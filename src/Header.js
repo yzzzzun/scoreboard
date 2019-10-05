@@ -2,10 +2,8 @@ import React from 'react';
 import {Stats} from "./Stats";
 import {StopWatch} from './StopWatch'
 
-export const Header = (props) => {
-	console.log(props);
+export const Header = ({title, players}) => {
 
-	const {title, players} = props;
 	return (
 		<header className="header">
 			<Stats players = {players}/>
