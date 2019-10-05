@@ -1,7 +1,14 @@
 import React from "react";
 import {Counter} from "./Counter";
+import PropTypes from 'prop-types';
 
 export class Player extends React.Component {
+
+	static price = 1000; //Player.price
+	static propTypes = {
+		removePlayer: PropTypes.func,
+		id: PropTypes.number,
+	}
 
 	shouldComponentUpdate(nextProps, nextState, nextContext) {
 		return nextProps.score !== this.props.score ? true : false
@@ -22,6 +29,4 @@ export class Player extends React.Component {
 			</div>
 		)
 	}
-} 
-	
-	
+}

@@ -3,27 +3,19 @@ import './App.css';
 import {Header} from "./Header";
 import {Player} from "./Player";
 import {AddPlayerForm} from "./AddPlayerForm";
+import {connect} from "react-redux";
 
 class App extends React.Component {
 
 	maxId = 4;
 
-	state = {
-		players: [
-			{name: 'LDK', score: 30, id: 1},
-			{name: 'HONG', score: 40, id: 2},
-			{name: 'KIM', score: 50, id: 3},
-			{name: 'PARK', score: 60, id: 4}
-		]
-	}
 	render() {
 		return (
 			<div className="scoreboard">
-				<Header title="My Scoreboard" players={this.state.players} />
-
+				<Header title="My Scoreboard" players={this.props.players} />
 
 				{
-					this.state.players.map((player) => {
+					this.props.players.map((player) => {
 						return (
 							<Player name={player.name} score={player.score} id={player.id} key={player.id}
 								// 2. props로 콜백 펑션을 전달
@@ -77,4 +69,10 @@ class App extends React.Component {
 	}
 }
 
-export default App;
+let mapStateToProps = (state) => {
+	return {
+		players: state.playerReducer.players
+	}
+}
+
+export default connect(mapStateToProps)(App);

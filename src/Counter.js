@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // 클래스 컴포넌트
 // 1. React.Component 상속, 2: render 오버라이딩해서 React Element를 리턴
@@ -21,4 +22,10 @@ export class Counter extends React.Component {
 			</div>
 		);
 	}
+}
+
+Counter.propTypes = {
+	changeScore : PropTypes.func,
+	id: PropTypes.number,
+	score: PropTypes.number,
 }
