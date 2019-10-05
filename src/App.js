@@ -21,6 +21,7 @@ class App extends React.Component {
 			<div className="scoreboard">
 				<Header title="My Scoreboard" players={this.state.players} />
 
+
 				{
 					this.state.players.map((player) => {
 						return (
